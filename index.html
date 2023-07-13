@@ -27,7 +27,7 @@
       if (response.ok) {
         const setCookieHeader = response.headers.get('Set-Cookie');
 	      console.log('got:', setCookieHeader);
-        Cookies.set('vidoomy-user-tags', setCookieHeader);
+        Cookies.set(setCookieHeader);
 
         // Log the cookie value to the console
         console.log('Cookie value:', Cookies.get('vidoomy-user-tags'));

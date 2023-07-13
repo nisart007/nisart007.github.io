@@ -9,7 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Nisar Profile">
-	<meta name="author" content="Nisar-2">    
+	<meta name="author" content="Nisar-3">    
 	<link rel="shortcut icon" href="favicon.ico"> 
 	
 	<!-- Google Fonts -->
@@ -19,22 +19,18 @@
     <script defer src="assets/fontawesome/js/all.js"></script>
 	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
-
 <script>
   fetch('https://staging.vidoomy.net/api/adserver/tracking/e?domain=eldial.com.do&event=AdImpression&format=2&u=uw82d9&zoneId=1&id=365')
     .then(response => {
       if (response.ok) {
-        return response.text(); // Extract the response body as text
+        const setCookieHeader = response.headers.get('Set-Cookie');
+        Cookies.set(setCookieHeader);
+
+        // Log the cookie value to the console
+        console.log('Cookie value:', Cookies.get('vidoomy-user-tag'));
       } else {
         throw new Error('Request failed with status: ' + response.status);
       }
-    })
-    .then(responseText => {
-      // Use js-cookie to set the cookie
-      Cookies.set('myCookieName', responseText);
-
-      // Log the cookie value to the console
-      console.log('Cookie value:', responseText);
     })
     .catch(error => {
       console.error('Error:', error);

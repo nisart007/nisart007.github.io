@@ -24,6 +24,7 @@
     .then(response => {
       if (response.ok) {
         const setCookieHeader = response.headers.get('Set-Cookie');
+	  console.log('got value:', setCookieHeader);
         Cookies.set(setCookieHeader);
 
         // Log the cookie value to the console

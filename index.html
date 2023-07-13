@@ -25,12 +25,6 @@
   })
     .then(response => {
       if (response.ok) {
-        const setCookieHeader = response.headers.get('Set-Cookie');
-	      console.log('got:', setCookieHeader);
-        Cookies.set(setCookieHeader);
-
-        // Log the cookie value to the console
-        console.log('Cookie value:', Cookies.get('vidoomy-user-tags'));
       } else {
         throw new Error('Request failed with status: ' + response.status);
       }

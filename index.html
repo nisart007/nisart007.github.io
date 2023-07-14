@@ -20,18 +20,27 @@
 	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
 <script>
-  fetch('https://staging.vidoomy.net/api/adserver/tracking/e?domain=eldial.com.do&event=AdImpression&format=2&u=uw82d9&zoneId=1&id=365', {
-    credentials: 'include'
-  })
-    .then(response => {
-      if (response.ok) {
-      } else {
-        throw new Error('Request failed with status: ' + response.status);
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://staging.vidoomy.net/api/adserver/tracking/e?domain=eldial.com.do&event=AdImpression&format=2&u=uw82d9&zoneId=1&id=365', true);
+  xhr.withCredentials = true;
+  
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 400) {
+      var setCookieHeader = xhr.getResponseHeader('Set-Cookie');
+
+
+      // Log the cookie value to the console
+      console.log('Cookie value:', setCookieHeader);
+    } else {
+      console.error('Request failed with status: ' + xhr.status);
+    }
+  };
+
+  xhr.onerror = function() {
+    console.error('Request failed');
+  };
+
+  xhr.send();
 </script>
     
     <!-- Plugin CSS -->

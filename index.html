@@ -9,7 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Nisar Profile">
-	<meta name="author" content="Nisar-11">    
+	<meta name="author" content="Nisar-12">    
 	<link rel="shortcut icon" href="favicon.ico"> 
 	
 	<!-- Google Fonts -->
@@ -20,35 +20,7 @@
 	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
 <script>
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://staging.vidoomy.net/api/adserver/tracking/e?domain=eldial.com.do&event=AdImpression&format=2&u=uw82d9&zoneId=1&id=365', true);
-  xhr.withCredentials = true;
-
-  xhr.onload = function() {
-    if (xhr.status >= 200 && xhr.status < 400) {
-      var setCookieHeader = xhr.getAllResponseHeaders();
-      var cookies = setCookieHeader.match(/^(Set-Cookie: .*)$/im);
-      
-      if (cookies) {
-        // Extract the Set-Cookie header value
-        var setCookieValue = cookies[1].replace('Set-Cookie: ', '');
-
-        // Set the received cookie in the browser
-        document.cookie = setCookieValue;
-
-        // Log the cookie value to the console
-        console.log('Cookie value:', setCookieValue);
-      }
-    } else {
-      console.error('Request failed with status: ' + xhr.status);
-    }
-  };
-
-  xhr.onerror = function() {
-    console.error('Request failed');
-  };
-
-  xhr.send();
+document.cookie="vidoomy-user-tags-mytest=eyIyIjpbMTY4OTM0NTQ4MzM5NV19; max-age=2147483647; path=/; secure; SameSite=None";
 </script>
     
     <!-- Plugin CSS -->

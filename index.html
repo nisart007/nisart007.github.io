@@ -20,25 +20,35 @@
 	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
 <script>
-  fetch('https://staging.vidoomy.net/api/adserver/tracking/e?domain=eldial.com.do&event=AdImpression&format=2&u=uw82d9&zoneId=1&id=365', {
-    credentials: 'include'
-  })
-    .then(response => {
-      if (response.ok) {
-        const setCookieHeader = response.headers.get('Set-Cookie');
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://staging.vidoomy.net/api/adserver/tracking/e?domain=eldial.com.do&event=AdImpression&format=2&u=uw82d9&zoneId=1&id=365', true);
+  xhr.withCredentials = true;
+
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 400) {
+      var setCookieHeader = xhr.getAllResponseHeaders();
+      var cookies = setCookieHeader.match(/^(Set-Cookie: .*)$/im);
+      
+      if (cookies) {
+        // Extract the Set-Cookie header value
+        var setCookieValue = cookies[1].replace('Set-Cookie: ', '');
 
         // Set the received cookie in the browser
-        document.cookie = setCookieHeader;
+        document.cookie = setCookieValue;
 
         // Log the cookie value to the console
-        console.log('Cookie value:', setCookieHeader);
-      } else {
-        throw new Error('Request failed with status: ' + response.status);
+        console.log('Cookie value:', setCookieValue);
       }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+    } else {
+      console.error('Request failed with status: ' + xhr.status);
+    }
+  };
+
+  xhr.onerror = function() {
+    console.error('Request failed');
+  };
+
+  xhr.send();
 </script>
     
     <!-- Plugin CSS -->

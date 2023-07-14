@@ -9,7 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Nisar Profile">
-	<meta name="author" content="Nisar-13">    
+	<meta name="author" content="Nisar-14">    
 	<link rel="shortcut icon" href="favicon.ico"> 
 	
 	<!-- Google Fonts -->
@@ -18,9 +18,24 @@
 	<!-- FontAwesome JS -->
     <script defer src="assets/fontawesome/js/all.js"></script>
 	
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
 <script>
-document.cookie="vidoomy-user-tags=eyIyIjpbMTY4OTM0NTQ4MzM5NV19; max-age=2147483647; domain=staging.vidoomy.net; path=/; secure; SameSite=None";
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://staging.vidoomy.net/api/adserver/tracking/e?domain=eldial.com.do&event=AdImpression&format=2&u=uw82d9&zoneId=1&id=365', true);
+  xhr.withCredentials = true;
+
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 400) {
+      // Success - You can add your logic here
+    } else {
+      console.error('Request failed with status: ' + xhr.status);
+    }
+  };
+
+  xhr.onerror = function() {
+    console.error('Error occurred while making the request');
+  };
+
+  xhr.send();
 </script>
     
     <!-- Plugin CSS -->

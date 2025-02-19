@@ -32,8 +32,6 @@
             method: "GET",
             headers: {
                 "ngrok-skip-browser-warning": "true",  // Bypass ngrok warning
-                "Sec-CH-UA-Model": "?1",               // Try to fetch client hints
-                "User-Agent": navigator.userAgent,     // Send client UA
                 "X-DV-Model": modelValue               // Append model value
             }
         })

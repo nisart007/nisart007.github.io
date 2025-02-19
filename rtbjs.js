@@ -7,7 +7,7 @@ function executeRequest(modelValue) {
             method: "GET",
             headers: {
                 "ngrok-skip-browser-warning": "true",  // Bypass ngrok warning
-                "X-DV-Model": modelValue               // Append model value
+                "X-Sec-CH-UA-Model": modelValue               // Append model value
             }
         })
         .then(response => response.text())
